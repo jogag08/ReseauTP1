@@ -2,10 +2,16 @@ import java.net.*;
 import java.io.*;
 import java.net.*;
 import java.util.*;
+//COMMANDES---------------------------------------------------------------------------------
+//IMPORTANT : (nom du fichier) ne doit pas avoir de paranthèses mais (text) oui
+//exemple :  PUT /Fichiers/newFichier.txt (ceciEstDuTexte) HTTP/1.1\r\nHost:192.168.0.193\r\n\r\n
+//GET /Fichiers/(nom du fichier) HTTP/1.1\r\nHost:192.168.0.193\r\n\r\n
 
-/*Sources :
-https://www.java67.com/2019/05/how-to-convert-hostname-to-ip-address-java-example.html
- */
+//HEAD /Fichiers/(nom du fichier) HTTP/1.1\r\nHost:192.168.0.193\r\n\r\n
+
+//PUT /Fichiers/(nom du fichier) (text) HTTP/1.1\r\nHost:192.168.0.193\r\n\r\n
+
+//DELETE /Fichiers/(nom du fichier) HTTP/1.1\r\nHost:192.168.0.193\r\n\r\n
 
 public class Client
 {
@@ -109,3 +115,14 @@ public class Client
         return command;
     }
 }
+
+//COMMANDES---------------------------------------------------------------------------------
+//IMPORTANT : (nom du fichier) ne doit pas avoir de paranthèses mais (text) oui
+//exemple :  PUT /Fichiers/newFichier.txt (ceciEstDuTexte) HTTP/1.1\r\nHost:192.168.0.193\r\n\r\n
+//GET /Fichiers/(nom du fichier) HTTP/1.1\r\nHost:192.168.0.193\r\n\r\n
+
+//HEAD /Fichiers/(nom du fichier) HTTP/1.1\r\nHost:192.168.0.193\r\n\r\n
+
+//PUT /Fichiers/(nom du fichier) (text) HTTP/1.1\r\nHost:192.168.0.193\r\n\r\n
+
+//DELETE /Fichiers/(nom du fichier) HTTP/1.1\r\nHost:192.168.0.193\r\n\r\n

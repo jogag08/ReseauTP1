@@ -7,11 +7,13 @@ import java.util.Date;
 import java.util.Scanner;
 
 //COMMANDES---------------------------------------------------------------------------------
+//IMPORTANT : (nom du fichier) ne doit pas avoir de paranthèses mais (text) oui
+//exemple :  PUT /Fichiers/newFichier.txt (ceciEstDuTexte) HTTP/1.1\r\nHost:192.168.0.193\r\n\r\n
 //GET /Fichiers/(nom du fichier) HTTP/1.1\r\nHost:192.168.0.193\r\n\r\n
 
 //HEAD /Fichiers/(nom du fichier) HTTP/1.1\r\nHost:192.168.0.193\r\n\r\n
 
-//PUT /Fichiers/(nom du fichier) HTTP/1.1\r\nHost:192.168.0.193\r\n\r\n
+//PUT /Fichiers/(nom du fichier) (text) HTTP/1.1\r\nHost:192.168.0.193\r\n\r\n
 
 //DELETE /Fichiers/(nom du fichier) HTTP/1.1\r\nHost:192.168.0.193\r\n\r\n
 public class Serveur {
@@ -48,7 +50,8 @@ public class Serveur {
                         CommandHEAD(line);
                     } else if (line.contains("PUT"))
                     {
-                        CommandPUT(line);
+                        String text = GetTextPUT(line);
+                        CommandPUT(line, text);
 
                     } else if (line.contains("DELETE"))
                     {
@@ -95,6 +98,34 @@ public class Serveur {
         }
         return path;
     }
+
+    public String GetTextPUT(String text)
+    {
+        String txt = "";
+        char c = ' ';
+        boolean b = false;
+        int cnt = 0;
+        for(int i = 0; i < text.length(); i++)
+        {
+            c = text.charAt(i);
+            if(c == '(' && cnt == 0)
+            {
+                b = true;
+                cnt += 1;
+                continue;
+            } else if (c == ')' && b)
+            {
+                b = false;
+                break;
+            }
+            if(b)
+            {
+                txt += c;
+            }
+        }
+        System.out.println(txt);
+        return txt;
+    }
     public void CommandGET(String line) {
         String path = GetPath(line);
         System.out.println(path);
@@ -107,7 +138,6 @@ public class Serveur {
                 while (scanFile.hasNextLine())
                 {
                     info += scanFile.nextLine();
-                    System.out.println(info);
                 }
                 scanFile.close();
                 out.writeUTF("Name : " + f.getName() + "\r\n" + "Size : " + f.length() + "\r\n" + "Date: " + new Date() + "\r\n\r\n" + info + "\r\n");
@@ -134,19 +164,15 @@ public class Serveur {
         }
     }
 
-    public void CommandPUT(String line)
+    public void CommandPUT(String line, String text)
     {
         try
         {
             String path = GetPath(line);
             FileWriter wFile = new FileWriter(path);
-            System.out.println(wFile);
-            out.writeUTF("Enter text :");
-            String mods = "";
-            //mods = in.readUTF();
-            mods = "modif";
-            wFile.write(mods);
+            wFile.write(text);
             wFile.close();
+            CommandGET(line);
         }
         catch (IOException e)
         {
@@ -161,5 +187,14 @@ public class Serveur {
             File f = new File(path);
             f.delete();
         }
-    }
+    }//COMMANDES---------------------------------------------------------------------------------
+    //IMPORTANT : (nom du fichier) ne doit pas avoir de paranthèses mais (text) oui
+    //exemple :  PUT /Fichiers/newFichier.txt (ceciEstDuTexte) HTTP/1.1\r\nHost:192.168.0.193\r\n\r\n
+    //GET /Fichiers/(nom du fichier) HTTP/1.1\r\nHost:192.168.0.193\r\n\r\n
+
+    //HEAD /Fichiers/(nom du fichier) HTTP/1.1\r\nHost:192.168.0.193\r\n\r\n
+
+    //PUT /Fichiers/(nom du fichier) (text) HTTP/1.1\r\nHost:192.168.0.193\r\n\r\n
+
+    //DELETE /Fichiers/(nom du fichier) HTTP/1.1\r\nHost:192.168.0.193\r\n\r\n
 }
