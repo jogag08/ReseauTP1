@@ -4,14 +4,14 @@ import java.net.*;
 import java.util.*;
 //COMMANDES---------------------------------------------------------------------------------
 //IMPORTANT : (nom du fichier) ne doit pas avoir de paranthèses mais (text) oui
-//exemple :  PUT /Fichiers/newFichier.txt (ceciEstDuTexte) HTTP/1.1\r\nHost:192.168.0.193\r\n\r\n
-//GET /Fichiers/(nom du fichier) HTTP/1.1\r\nHost:192.168.0.193\r\n\r\n
+//exemple :  PUT /Fichiers/newFichier.txt (ceciEstDuTexte) HTTP/1.1\r\nHost:206.41.87.6\r\n\r\n
+//GET /Fichiers/(nom du fichier) HTTP/1.1\r\nHost:206.41.87.6\r\n\r\n
 
-//HEAD /Fichiers/(nom du fichier) HTTP/1.1\r\nHost:192.168.0.193\r\n\r\n
+//HEAD /Fichiers/(nom du fichier) HTTP/1.1\r\nHost:206.41.87.6\r\n\r\n
 
-//PUT /Fichiers/(nom du fichier) (text) HTTP/1.1\r\nHost:192.168.0.193\r\n\r\n
+//PUT /Fichiers/(nom du fichier) (text) HTTP/1.1\r\nHost:206.41.87.6\r\n\r\n
 
-//DELETE /Fichiers/(nom du fichier) HTTP/1.1\r\nHost:192.168.0.193\r\n\r\n
+//DELETE /Fichiers/(nom du fichier) HTTP/1.1\r\nHost:206.41.87.6\r\n\r\n
 
 public class Client
 {
