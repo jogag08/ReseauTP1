@@ -1,0 +1,7 @@
+Protocol : "jaune"
+
+Commandes : CreateFile : Pour créer un ficher
+ 	    ConsultFiles : Pour afficher les fichiers
+	    AmendFile : Pour écrire dans un fichier
+            ShowFileInfo : Pour afficher les informations dans un ficher
+	    
